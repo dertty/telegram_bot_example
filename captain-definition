@@ -8,6 +8,6 @@
     "COPY run.sh /app/",
     "RUN pip install -r requirements.txt --no-cache-dir",
     "COPY /app /app/",
-    "CMD sh /app/run.sh",
+    "CMD sh /app/run.sh"
   ]
 }
