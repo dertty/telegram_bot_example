@@ -1,2 +1,2 @@
 pip install -r requirements.txt --no-cache-dir
-python manage.py
+python bot.py
