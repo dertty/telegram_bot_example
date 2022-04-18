@@ -1,12 +1,19 @@
 {
   "schemaVersion": 2,
   "dockerfileLines": [
-    "FROM library/python:3.9.12-alpine",
-    "RUN mkdir -p /app",
-    "WORKDIR /app",
-    "COPY requirements.txt /app/",
-    "COPY run.sh /app/",
-    "COPY /app /app/",
-    "CMD sh /app/run.sh"
+    "FROM library/python:3.9.12-alpine AS builder",
+    "RUN pip install --user pipenv",
+    "ENV PIPENV_VENV_IN_PROJECT=1",
+    "ADD Pipfile.lock Pipfile /usr/src/",
+    "WORKDIR /usr/src",
+    "RUN /root/.local/bin/pipenv sync",
+    "RUN /usr/src/.venv/bin/python -c 'import requests; print(requests.__version__)'",
+    "FROM library/python:3.9.12-alpine AS builder",
+    "RUN mkdir -v /usr/src/venv",
+    "COPY --from=builder /usr/src/.venv/ /usr/src/venv/",
+    "RUN /usr/src/venv/bin/python -c 'import requests; print(requests.__version__)'",
+    "WORKDIR /usr/src/",
+    "COPY /app /usr/src/",
+    "CMD ['./venv/bin/python', '-m', 'run.py']"
   ]
 }
