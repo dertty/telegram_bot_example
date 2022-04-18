@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 2,
+  "dockerfileLines": [
+    "FROM library/python:3.9.12-alpine",
+    "RUN mkdir -p /app",
+    "WORKDIR /app",
+    "COPY requirements.txt /app/",
+    "COPY run.sh /app/",
+    "RUN pip install -r requirements.txt --no-cache-dir",
+    COPY /app /app/
+    "CMD sh /app/run.sh"
+  ]
+}
