@@ -1,6 +1,6 @@
 # telegram_bot_example
   Пример телеграм бота для self-hosted paas. 
-  https://captain.dev.pp.ru/#/apps/details/telegram-bot-example
+  Страница бота: https://captain.dev.pp.ru/#/apps/details/telegram-bot-example, сам бот https://t.me/example_test_docker_bot
 
 # Инструкция как сделать приложение как в heroku
 1) Создаём ssh ключ для github на сайте https://8gwifi.org/sshfunctions.jsp и запоминаем публичынй и приватный ключи
