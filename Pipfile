@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 python-telegram-bot = "*"
 psycopg2-binary = "*"
-psycopg2 = "*"
 numpy = "*"
 pandas = "*"
 
