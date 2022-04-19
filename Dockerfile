@@ -13,19 +13,7 @@ ENV PYTHONFAULTHANDLER=1 \
 
 # System deps:
 
-RUN apk --no-cache add \
-     bash \
-     build-base \
-     curl \
-     gcc \
-     gettext \
-     git \
-     libffi-dev \
-     linux-headers \
-     musl-dev \
-     postgresql-dev \
-     tini
-
+RUN apt-get update && apt-get install -y --no-install-recommends gcc curl git
 
 # Creating folders, and files for a project:
 
