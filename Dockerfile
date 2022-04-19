@@ -1,4 +1,4 @@
-FROM python:3.10.4-alpine3.15
+FROM python:3.10.4-slim-bullseye
 
 ENV PYTHONFAULTHANDLER=1 \
   PYTHONUNBUFFERED=1 \
@@ -8,8 +8,7 @@ ENV PYTHONFAULTHANDLER=1 \
   PIP_DEFAULT_TIMEOUT=100 \
   PIPENV_HIDE_EMOJIS=true \
   PIPENV_COLORBLIND=true \
-  PIPENV_NOSPIN=true \
-  PIPENV_DOTENV_LOCATION=config/.env
+  PIPENV_NOSPIN=true
 
 
 # System deps:
@@ -36,8 +35,7 @@ WORKDIR /code
 
 # Project initialization:
 
-RUN pip install pipenv \
-  && pipenv install --deploy --system --ignore-pipfile
+RUN pip install pipenv --no-cache-dir && pipenv install --deploy --system --ignore-pipfile
 
 #
 #FROM python:3.10.4-slim-bullseye as base
@@ -76,4 +74,4 @@ RUN pip install pipenv \
 #COPY . .
 #
 ## Run the application
-CMD ["python", "app/bot.py"]
+CMD ["app/bot.py"]
