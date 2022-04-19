@@ -62,4 +62,4 @@ RUN pip install pipenv --no-cache-dir && pipenv install --deploy --system --igno
 #COPY . .
 #
 ## Run the application
-CMD ["app/bot.py"]
+CMD ["/code/app/bot.py"]
